@@ -1,11 +1,7 @@
-import { MainPage } from "./pages/MainPage.js";
-import { ProfilePage } from "./pages/ProfilePage.js";
-import { LoginPage } from "./pages/LoginPage.js";
-import { ErrorPage } from "./pages/ErrorPage.js";
+import { render } from "./routes/router";
 
-document.body.innerHTML = `
-  ${MainPage()}
-  ${ProfilePage()}
-  ${LoginPage()}
-  ${ErrorPage()}
-`;
+const app = () => {
+  render();
+};
+
+app();
