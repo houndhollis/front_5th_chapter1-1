@@ -4,10 +4,13 @@ import { LoginPage } from "../pages/LoginPage.js";
 import { ErrorPage } from "../pages/ErrorPage.js";
 import { userAction } from "../store/action/userAction.js";
 
+const isProduction = import.meta.env.MODE === "production";
+const BASE_ROUTE = isProduction ? "/front_5th_chapter1-1/" : "/";
+
 const route = {
-  "/": MainPage,
-  "/login": LoginPage,
-  "/profile": ProfilePage,
+  [BASE_ROUTE]: MainPage,
+  [`${BASE_ROUTE}login`]: LoginPage,
+  [`${BASE_ROUTE}profile`]: ProfilePage,
 };
 
 export const moveToPage = (page) => {
