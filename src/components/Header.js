@@ -2,7 +2,11 @@ import { userAction } from "../store/action/userAction";
 
 export const Header = () => {
   const isLogin = userAction.checkIsLoginStatus();
-  const isHome = window.location.pathname === "/";
+  const isProduction = import.meta.env.MODE === "production";
+
+  const BASE_ROUTE = isProduction ? "/front_5th_chapter1-1/" : "/";
+  const isHome = window.location.pathname === BASE_ROUTE;
+
   return `
     <header class="bg-blue-600 text-white p-4 sticky top-0">
       <h1 class="text-2xl font-bold">항해플러스</h1>

@@ -55,12 +55,8 @@ export const render = () => {
     if (event.target.id === "login-form") {
       const username = event.target.elements.username.value;
 
-      if (!username) {
-        return alert("사용자 이름은 필수입니다.");
-      } else {
-        userAction.login(username);
-        moveToPage("/profile");
-      }
+      userAction.login(username);
+      moveToPage("/profile");
     }
 
     if (event.target.id === "profile-form") {
