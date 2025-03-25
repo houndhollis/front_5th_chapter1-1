@@ -1,4 +1,4 @@
-import { userAction } from "../action/userAction";
+import { userAction } from "../store/action/userAction";
 
 export const Header = () => {
   const isLogin = userAction.checkIsLoginStatus();

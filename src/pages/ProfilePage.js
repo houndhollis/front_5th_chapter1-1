@@ -1,5 +1,5 @@
 import { Header } from "../components/Header";
-import { userAction } from "../action/userAction";
+import { userAction } from "../store/action/userAction";
 import { Footer } from "../components/Footer";
 
 export const ProfilePage = () => {

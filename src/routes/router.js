@@ -2,7 +2,7 @@ import { MainPage } from "../pages/MainPage.js";
 import { ProfilePage } from "../pages/ProfilePage.js";
 import { LoginPage } from "../pages/LoginPage.js";
 import { ErrorPage } from "../pages/ErrorPage.js";
-import { userAction } from "../action/userAction.js";
+import { userAction } from "../store/action/userAction.js";
 
 const route = {
   "/": MainPage,
