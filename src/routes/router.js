@@ -5,16 +5,16 @@ import { ErrorPage } from "../pages/ErrorPage.js";
 import { userAction } from "../store/action/userAction.js";
 
 const isProduction = import.meta.env.MODE === "production";
-const BASE_ROUTE = isProduction ? "/front_5th_chapter1-1/" : "/";
+const BASE_ROUTE = isProduction ? "/front_5th_chapter1-1" : "";
 
 const route = {
-  [BASE_ROUTE]: MainPage,
-  [`${BASE_ROUTE}login`]: LoginPage,
-  [`${BASE_ROUTE}profile`]: ProfilePage,
+  [`${BASE_ROUTE}/`]: MainPage,
+  [`${BASE_ROUTE}/login`]: LoginPage,
+  [`${BASE_ROUTE}/profile`]: ProfilePage,
 };
 
 export const moveToPage = (page) => {
-  window.history.pushState(null, null, page);
+  window.history.pushState(null, null, [`${BASE_ROUTE}${page}`]);
   render();
 };
 

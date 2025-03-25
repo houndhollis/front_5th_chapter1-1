@@ -5,23 +5,23 @@ import { ErrorPage } from "../pages/ErrorPage.js";
 import { userAction } from "../store/action/userAction.js";
 
 const isProduction = import.meta.env.MODE === "production";
-const BASE_ROUTE = isProduction ? "/front_5th_chapter1-1/" : "/";
+const BASE_ROUTE = isProduction ? "/front_5th_chapter1-1" : "";
 
 const route = {
-  [`#${BASE_ROUTE}`]: MainPage,
-  [`#${BASE_ROUTE}login`]: LoginPage,
-  [`#${BASE_ROUTE}profile`]: ProfilePage,
+  [`#${BASE_ROUTE}/`]: MainPage,
+  [`#${BASE_ROUTE}/login`]: LoginPage,
+  [`#${BASE_ROUTE}/profile`]: ProfilePage,
 };
 
 export const moveToPage = (page) => {
   if (page === "##") {
     // 로그아웃 버튼을 눌렀을 경우
     userAction.logout();
-    page = "#/login";
+    page = [`#${BASE_ROUTE}/login`];
   }
 
   if (!page.startsWith("#")) {
-    page = `#${page}`;
+    page = [`#${BASE_ROUTE}${page}`];
   }
   window.location.hash = page;
 };
