@@ -12,7 +12,7 @@ export const Header = () => {
       <ul class="flex justify-around">
       <li><a href="/" class="${isHome ? "text-blue-600" : "text-gray-600"} font-bold">홈</a></li>
       ${isLogin ? `<li><a href="/profile" class="${!isHome ? "text-blue-600" : "text-gray-600"} font-bold">프로필</a></li>` : ""}
-      ${isLogin ? `<li><a id="logout" href="#" class="text-gray-600">로그아웃</a></li>` : `<li><a href="login" class="text-gray-600">로그인</a></li>`}
+      ${isLogin ? `<li><a id="logout" href="#" class="text-gray-600">로그아웃</a></li>` : `<li><a href="/login" class="text-gray-600">로그인</a></li>`}
       </ul>
     </nav>
   `;

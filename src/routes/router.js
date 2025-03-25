@@ -31,19 +31,33 @@ export const render = () => {
   const page = route[pathname] || ErrorPage;
 
   root.innerHTML = page();
-  document.querySelectorAll("a").forEach((a) => {
-    if (a.id === "logout") {
-      a.addEventListener("click", (event) => {
-        event.preventDefault();
-        userAction.logout();
-        moveToPage("/login");
-      });
+  // document.querySelectorAll("a").forEach((a) => {
+  //   if (a.id === "logout") {
+  //     a.addEventListener("click", (event) => {
+  //       event.preventDefault();
+  //       userAction.logout();
+  //       moveToPage("/login");
+  //     });
+  //   }
+
+  //   a.addEventListener("click", (event) => {
+  //     event.preventDefault();
+  //     moveToPage(a.pathname);
+  //   });
+  // });
+  root.addEventListener("click", (event) => {
+    const target = event.target.closest("a");
+    if (!target) return;
+
+    event.preventDefault();
+
+    if (target.id === "logout") {
+      userAction.logout();
+      moveToPage("/login");
+      return;
     }
 
-    a.addEventListener("click", (event) => {
-      event.preventDefault();
-      moveToPage(a.pathname);
-    });
+    moveToPage(target.pathname);
   });
 
   root.addEventListener("submit", (event) => {
