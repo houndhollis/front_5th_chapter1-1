@@ -18,6 +18,8 @@ export const moveToPage = (page) => {
   render();
 };
 
+let isEventAttached = false;
+
 export const render = () => {
   const root = document.getElementById("root");
 
@@ -34,6 +36,9 @@ export const render = () => {
   const page = route[pathname] || ErrorPage;
 
   root.innerHTML = page();
+
+  if (isEventAttached) return;
+  isEventAttached = true;
 
   root.addEventListener("click", (event) => {
     const target = event.target.closest("a");
