@@ -60,6 +60,10 @@ export const render = () => {
     if (event.target.id === "login-form") {
       const username = event.target.elements.username.value;
 
+      if (!username) {
+        return alert("사용자 이름을 입력해주세요.");
+      }
+
       userAction.login(username);
       moveToPage("/profile");
     }
