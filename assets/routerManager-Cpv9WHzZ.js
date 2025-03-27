@@ -149,4 +149,4 @@
         ${f()}
       </div>
     </div>
-  </div>`},o={mode:"",basePath:"",isEventAttached:!1,getRoute(){const e=this.mode==="history"?"/":"#/";return{[`${o.basePath}${e}`]:w,[`${o.basePath}${e}login`]:$,[`${o.basePath}${e}profile`]:P}}},L=e=>{o.basePath="/front_5th_chapter1-1/",o.mode=e,u()};export{L as r};
+  </div>`},o={mode:"",basePath:"",isEventAttached:!1,getRoute(){const e=this.mode==="history"?"/":"#/";return{[`${o.basePath}${e}`]:w,[`${o.basePath}${e}login`]:$,[`${o.basePath}${e}profile`]:P}}},L=e=>{o.basePath="/front_5th_chapter1-1",o.mode=e,u()};export{L as r};
