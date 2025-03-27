@@ -61,7 +61,7 @@
     ${f()}
   </div>
 </div>
-`,$=()=>`
+`,P=()=>`
   <main class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
       <h1 class="text-2xl font-bold text-center text-blue-600 mb-8">항해플러스</h1>
@@ -83,7 +83,7 @@
       </div>
     </div>
   </main>
-`,P=()=>{const e=d.getUserProfile();return`
+`,$=()=>{const e=d.getUserProfile();return`
   <div id="root">
     <div class="bg-gray-100 min-h-screen flex justify-center">
       <div class="max-w-md w-full">
@@ -149,4 +149,4 @@
         ${f()}
       </div>
     </div>
-  </div>`},o={mode:"",basePath:"",isEventAttached:!1,getRoute(){const e=this.mode==="history"?"/":"#/";return{[`${o.basePath}${e}`]:w,[`${o.basePath}${e}login`]:$,[`${o.basePath}${e}profile`]:P}}},L=e=>{o.basePath="/front_5th_chapter1-1",o.mode=e,u()};export{L as r};
+  </div>`},o={mode:"",basePath:"",isEventAttached:!1,getRoute(){const e=this.mode==="history"?"/":"#/";return{[`${o.basePath}${e}`]:w,[`${o.basePath}${e}login`]:P,[`${o.basePath}${e}profile`]:$}}},L=e=>{const t=window.location.href.includes("github.io");console.log(t,"production"),o.basePath=t?"/front_5th_chapter1-1":"",o.mode=e,u()};export{L as r};
