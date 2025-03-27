@@ -1,4 +1,4 @@
-(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const s of document.querySelectorAll('link[rel="modulepreload"]'))n(s);new MutationObserver(s=>{for(const o of s)if(o.type==="childList")for(const u of o.addedNodes)u.tagName==="LINK"&&u.rel==="modulepreload"&&n(u)}).observe(document,{childList:!0,subtree:!0});function r(s){const o={};return s.integrity&&(o.integrity=s.integrity),s.referrerPolicy&&(o.referrerPolicy=s.referrerPolicy),s.crossOrigin==="use-credentials"?o.credentials="include":s.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function n(s){if(s.ep)return;s.ep=!0;const o=r(s);fetch(s.href,o)}})();const g=()=>`
+(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const s of document.querySelectorAll('link[rel="modulepreload"]'))n(s);new MutationObserver(s=>{for(const l of s)if(l.type==="childList")for(const u of l.addedNodes)u.tagName==="LINK"&&u.rel==="modulepreload"&&n(u)}).observe(document,{childList:!0,subtree:!0});function o(s){const l={};return s.integrity&&(l.integrity=s.integrity),s.referrerPolicy&&(l.referrerPolicy=s.referrerPolicy),s.crossOrigin==="use-credentials"?l.credentials="include":s.crossOrigin==="anonymous"?l.credentials="omit":l.credentials="same-origin",l}function n(s){if(s.ep)return;s.ep=!0;const l=o(s);fetch(s.href,l)}})();const g=()=>`
   <main class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="bg-white p-8 rounded-lg shadow-md w-full text-center" style="max-width: 480px">
       <h1 class="text-2xl font-bold text-blue-600 mb-4">항해플러스</h1>
@@ -12,19 +12,19 @@
       </a>
     </div>
   </main>
-`,c=e=>{l.mode!=="hash"&&(window.history.pushState(null,null,`${l.basePath}${e}`),m())},d={get(e){return JSON.parse(localStorage.getItem(e))},set(e,t){return localStorage.setItem(e,t)},remove(e){return localStorage.removeItem(e)}};let a={};const i={login(e){a={username:e,email:"",bio:""},d.set("user",JSON.stringify(a))},logout(){a=null,d.remove("user")},getUserState(){return a||(a=d.get("user")),a},getUserProfile(){return this.getUserState()},checkIsLoginStatus(){return!!this.getUserState()},updateUserProfile(e,t,r){a={username:e,email:t,bio:r},d.set("user",JSON.stringify(a))}},p=()=>{a=d.get("user")};p();const h=e=>{e&&(e.addEventListener("click",t=>{const r=t.target.closest("a");if(r){if(t.preventDefault(),r.id==="logout"){i.logout(),c("/login");return}c(r.pathname)}}),e.addEventListener("submit",t=>{if(t.preventDefault(),t.target.id==="login-form"){const r=t.target.elements.username.value;if(!r)return alert("사용자 이름을 입력해주세요.");i.login(r),c("/profile")}if(t.target.id==="profile-form"){const r=t.target.elements.username.value,n=t.target.elements.email.value,s=t.target.elements.bio.value;i.updateUserProfile(r,n,s),alert("프로필이 업데이트되었습니다.")}}))},m=()=>{const e=document.getElementById("root"),t=l.getRoute(),r=i.checkIsLoginStatus(),n=window.location.pathname;if(n==="/profile"&&!r)return c("/login");if(n==="/login"&&r)return c("/");const s=t[n]||g;if(e.innerHTML=s(),!l.isEventAttached)return l.isEventAttached=!0,h(e)};window.addEventListener("popstate",m);const f=()=>`
+`,c=e=>{r.mode!=="hash"&&(window.history.pushState(null,null,`${r.basePath}${e}`),m())},d={get(e){return JSON.parse(localStorage.getItem(e))},set(e,t){return localStorage.setItem(e,t)},remove(e){return localStorage.removeItem(e)}};let a={};const i={login(e){a={username:e,email:"",bio:""},d.set("user",JSON.stringify(a))},logout(){a=null,d.remove("user")},getUserState(){return a||(a=d.get("user")),a},getUserProfile(){return this.getUserState()},checkIsLoginStatus(){return!!this.getUserState()},updateUserProfile(e,t,o){a={username:e,email:t,bio:o},d.set("user",JSON.stringify(a))}},p=()=>{a=d.get("user")};p();const h=e=>{e&&(e.addEventListener("click",t=>{const o=t.target.closest("a");if(o){if(t.preventDefault(),o.id==="logout"){i.logout(),c("/login");return}c(o.pathname)}}),e.addEventListener("submit",t=>{if(t.preventDefault(),t.target.id==="login-form"){const o=t.target.elements.username.value;if(!o)return alert("사용자 이름을 입력해주세요.");i.login(o),c("/profile")}if(t.target.id==="profile-form"){const o=t.target.elements.username.value,n=t.target.elements.email.value,s=t.target.elements.bio.value;i.updateUserProfile(o,n,s),alert("프로필이 업데이트되었습니다.")}}))},m=()=>{const e=document.getElementById("root"),t=r.getRoute(),o=i.checkIsLoginStatus(),n=window.location.pathname;if(n==="/profile"&&!o)return c("/login");if(n==="/login"&&o)return c("/");const s=t[n]||g;if(e.innerHTML=s(),!r.isEventAttached)return r.isEventAttached=!0,h(e)};window.addEventListener("popstate",m);const f=()=>`
     <footer class="bg-gray-200 p-4 text-center">
       <p>&copy; 2024 항해플러스. All rights reserved.</p>
     </footer>
-  `,b=()=>{const e=i.checkIsLoginStatus(),t=window.location.pathname===(l.basePath||"/");return`
+  `,b=()=>{const e=i.checkIsLoginStatus(),o=r.mode!=="history"?window.location.hash==="#/":window.location.pathname===(r.basePath||"/");return`
     <header class="bg-blue-600 text-white p-4 sticky top-0">
       <h1 class="text-2xl font-bold">항해플러스</h1>
     </header>
 
     <nav class="bg-white shadow-md p-2 sticky top-14">
       <ul class="flex justify-around">
-      <li><a href="/" class="${t?"text-blue-600":"text-gray-600"} font-bold">홈</a></li>
-      ${e?`<li><a href="/profile" class="${t?"text-gray-600":"text-blue-600"} font-bold">프로필</a></li>`:""}
+      <li><a href="/" class="${o?"text-blue-600":"text-gray-600"} font-bold">홈</a></li>
+      ${e?`<li><a href="/profile" class="${o?"text-gray-600":"text-blue-600"} font-bold">프로필</a></li>`:""}
       ${e?'<li><a id="logout" href="#" class="text-gray-600">로그아웃</a></li>':'<li><a href="/login" class="text-gray-600">로그인</a></li>'}
       </ul>
     </nav>
@@ -149,4 +149,4 @@
         ${f()}
       </div>
     </div>
-  </div>`},l={mode:"",basePath:"",isEventAttached:!1,getRoute(){return{[`${l.basePath}/`]:y,[`${l.basePath}/login`]:w,[`${l.basePath}/profile`]:P}}},$=e=>{l.basePath="/front_5th_chapter1-1",l.mode=e,m()};export{g as E,w as L,y as M,P,$ as r,i as u};
+  </div>`},r={mode:"",basePath:"",isEventAttached:!1,getRoute(){return{[`${r.basePath}/`]:y,[`${r.basePath}/login`]:w,[`${r.basePath}/profile`]:P}}},$=e=>{console.log("설마 여기?"),r.basePath="/front_5th_chapter1-1",r.mode=e,m()};export{g as E,w as L,y as M,P,$ as r,i as u};
