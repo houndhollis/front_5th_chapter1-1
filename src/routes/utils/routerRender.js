@@ -1,21 +1,22 @@
-import { ErrorPage } from "../pages/ErrorPage";
+import { ErrorPage } from "../../pages/ErrorPage";
 
-import { moveToPage } from "./utils/moveToPage";
-import { userAction } from "../store/action/userAction";
-import { routerState } from "./routerManager";
+import { moveToPage } from "./moveToPage";
+import { userAction } from "../../store/action/userAction";
+import { routerState } from "../routerManager";
 import { routerAddEvent } from "./routerAddEvent";
 
 export const routerRender = () => {
   const root = document.getElementById("root");
 
   const route = routerState.getRoute();
+  const isLogin = userAction.checkIsLoginStatus();
   const pathname = window.location.pathname;
 
-  if (pathname === "/profile" && !userAction.checkIsLoginStatus()) {
+  if (pathname === "/profile" && !isLogin) {
     return moveToPage("/login");
   }
 
-  if (pathname === "/login" && userAction.checkIsLoginStatus()) {
+  if (pathname === "/login" && isLogin) {
     return moveToPage("/");
   }
 

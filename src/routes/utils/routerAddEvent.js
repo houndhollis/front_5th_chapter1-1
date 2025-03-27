@@ -1,5 +1,5 @@
-import { userAction } from "../store/action/userAction";
-import { moveToPage } from "./utils/moveToPage";
+import { userAction } from "../../store/action/userAction";
+import { moveToPage } from "./moveToPage";
 
 export const routerAddEvent = (root) => {
   if (!root) return;

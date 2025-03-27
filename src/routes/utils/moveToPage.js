@@ -1,5 +1,5 @@
 import { routerState } from "../routerManager";
-import { routerRender } from "../routerRender";
+import { routerRender } from "./routerRender";
 
 export const moveToPage = (page) => {
   if (routerState.mode !== "hash") {

@@ -1,4 +1,4 @@
-import { routerRender } from "./routerRender";
+import { routerRender } from "./utils/routerRender";
 import { MainPage } from "../pages/MainPage";
 import { LoginPage } from "../pages/LoginPage";
 import { ProfilePage } from "../pages/ProfilePage";
