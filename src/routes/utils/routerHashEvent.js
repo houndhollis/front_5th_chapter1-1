@@ -1,7 +1,7 @@
 import { userAction } from "../../store/action/userAction";
 import { moveToPage } from "./moveToPage";
 
-export const routerAddEvent = (root) => {
+export const routerHashEvent = (root) => {
   if (!root) return;
 
   root.addEventListener("click", (event) => {
@@ -16,7 +16,7 @@ export const routerAddEvent = (root) => {
       return;
     }
 
-    moveToPage(target.pathname);
+    moveToPage(target.getAttribute("href"));
   });
 
   root.addEventListener("submit", (event) => {

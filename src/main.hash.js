@@ -1,7 +1,7 @@
-import { hashRender } from "./routes/hashRouter";
+import { routerManager } from "./routes/routerManager";
 
 const app = () => {
-  hashRender();
+  routerManager("hash");
 };
 
 app();

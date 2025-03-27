@@ -1,7 +1,7 @@
 import { routerManager } from "./routes/routerManager.js";
 
 const app = () => {
-  routerManager();
+  routerManager("history");
 };
 
 app();
