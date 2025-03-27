@@ -1,22 +1,36 @@
 import { store } from "../store";
 
+// MEMO : 비영속적 데이터 관리, 로컬스토리지 확인전 객체 참조를 먼저합니다.
+export let userState = {};
+
 export const userAction = {
   login(username) {
-    return store.set("user", JSON.stringify({ username, email: "", bio: "" }));
+    userState = { username, email: "", bio: "" };
+    store.set("user", JSON.stringify(userState));
   },
   logout() {
-    return store.remove("user");
+    userState = null;
+    store.remove("user");
+  },
+  getUserState() {
+    if (!userState) {
+      userState = store.get("user");
+    }
+    return userState;
   },
   getUserProfile() {
-    return store.get("user");
+    return this.getUserState();
   },
   checkIsLoginStatus() {
-    return Boolean(store.get("user"));
+    return Boolean(this.getUserState());
   },
   updateUserProfile(username, email, bio) {
-    return store.set(
-      "user",
-      JSON.stringify({ username: username, email: email, bio: bio }),
-    );
+    userState = { username, email, bio };
+    store.set("user", JSON.stringify(userState));
   },
 };
+
+const initUserState = () => {
+  userState = store.get("user");
+};
+initUserState();
