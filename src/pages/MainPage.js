@@ -1,6 +1,6 @@
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
-import { postListHtml } from "../components/PostList";
+import { postList } from "../components/PostList";
 
 export const MainPage = () => `
 <div class="bg-gray-100 min-h-screen flex justify-center">
@@ -12,7 +12,7 @@ export const MainPage = () => `
         <button class="mt-2 bg-blue-600 text-white px-4 py-2 rounded">게시</button>
       </div>
       <div class="space-y-4">
-       ${postListHtml}
+       ${postList}
       </div>
     </main>
 

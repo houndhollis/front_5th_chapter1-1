@@ -1,6 +1,6 @@
 import { POST_LIST } from "../mock/data";
 
-export const postListHtml = POST_LIST.map(
+export const postList = POST_LIST.map(
   (post) => `
   <div class="bg-white rounded-lg shadow p-4">
     <div class="flex items-center mb-2">
