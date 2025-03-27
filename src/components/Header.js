@@ -4,7 +4,8 @@ import { userAction } from "../store/action/userAction";
 export const Header = () => {
   const isLogin = userAction.checkIsLoginStatus();
 
-  const isAtBaseRoute = window.location.pathname === routerState.basePath;
+  const isAtBaseRoute =
+    window.location.pathname === routerState.basePath || "/";
 
   return `
     <header class="bg-blue-600 text-white p-4 sticky top-0">
