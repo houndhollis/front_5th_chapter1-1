@@ -9,12 +9,13 @@ export const routerState = {
   isEventAttached: false,
 
   getRoute() {
-    const prefix = this.mode === "history" ? "/front_5th_chapter1-1/" : "#/";
-
+    const prefix = this.mode === "history" ? "/" : "#/";
+    const productBasePath =
+      import.meta.env.MODE === "production" ? "/front_5th_chapter1-1" : "";
     return {
-      [`${prefix}`]: MainPage,
-      [`${prefix}login`]: LoginPage,
-      [`${prefix}profile`]: ProfilePage,
+      [`${productBasePath}${prefix}`]: MainPage,
+      [`${productBasePath}${prefix}login`]: LoginPage,
+      [`${productBasePath}${prefix}profile`]: ProfilePage,
     };
   },
 };
