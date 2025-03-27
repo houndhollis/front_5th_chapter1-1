@@ -8,23 +8,16 @@ const isProduction = import.meta.env.MODE === "production";
 const BASE_ROUTE = isProduction ? "/front_5th_chapter1-1" : "";
 
 const route = {
-  [`#${BASE_ROUTE}/`]: MainPage,
-  [`#${BASE_ROUTE}/login`]: LoginPage,
-  [`#${BASE_ROUTE}/profile`]: ProfilePage,
+  [`${BASE_ROUTE}#/`]: MainPage,
+  [`${BASE_ROUTE}#/login`]: LoginPage,
+  [`${BASE_ROUTE}#/profile`]: ProfilePage,
 };
 
 export const moveToPage = (page) => {
-  if (page === "##") {
-    // 로그아웃 버튼을 눌렀을 경우
-    userAction.logout();
-    page = [`#${BASE_ROUTE}/login`];
-  }
-
-  if (!page.startsWith("#")) {
-    page = [`#${BASE_ROUTE}${page}`];
-  }
   window.location.hash = page;
 };
+
+let isEventAttached = false;
 
 export const hashRender = () => {
   const root = document.getElementById("root");
@@ -42,17 +35,34 @@ export const hashRender = () => {
   const page = route[pathname] || ErrorPage;
 
   root.innerHTML = page();
-  document.querySelectorAll("a").forEach((a) => {
-    a.addEventListener("click", (event) => {
-      event.preventDefault();
-      moveToPage(`#${a.getAttribute("href")}`);
-    });
+
+  if (isEventAttached) return;
+  isEventAttached = true;
+
+  root.addEventListener("click", (event) => {
+    const target = event.target.closest("a");
+    if (!target) return;
+
+    event.preventDefault();
+
+    if (target.id === "logout") {
+      userAction.logout();
+      moveToPage("#/login");
+      return;
+    }
+
+    moveToPage(target.getAttribute("href"));
   });
 
   root.addEventListener("submit", (event) => {
     event.preventDefault();
     if (event.target.id === "login-form") {
       const username = event.target.elements.username.value;
+
+      if (!username) {
+        return alert("사용자 이름을 입력해주세요.");
+      }
+
       userAction.login(username);
       moveToPage("#/profile");
     }

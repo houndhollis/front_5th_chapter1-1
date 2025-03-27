@@ -1,4 +1,4 @@
-import { hashRender } from "./routes/\bhashRouter";
+import { hashRender } from "./routes/hashRouter";
 
 const app = () => {
   hashRender();
