@@ -21,7 +21,7 @@ export const routerState = {
 
 export const routerManager = (mode) => {
   const isProduction = import.meta.env.MODE === "production";
-  routerState.basePath = isProduction ? "/front_5th_chapter1-1/" : "";
+  routerState.basePath = isProduction ? "/front_5th_chapter1-1" : "";
   routerState.mode = mode;
 
   routerRender();
