@@ -12,9 +12,9 @@ export const routerState = {
     const prefix = this.mode === "history" ? "/" : "#/";
 
     return {
-      [`${routerState.basePath}${prefix}`]: MainPage,
-      [`${routerState.basePath}${prefix}login`]: LoginPage,
-      [`${routerState.basePath}${prefix}profile`]: ProfilePage,
+      [`${prefix}`]: MainPage,
+      [`${prefix}login`]: LoginPage,
+      [`${prefix}profile`]: ProfilePage,
     };
   },
 };
