@@ -1,7 +1,7 @@
-import { render } from "./routes/router.js";
+import { routerManager } from "./routes/routerManager.js";
 
 const app = () => {
-  render();
+  routerManager();
 };
 
 app();
