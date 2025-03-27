@@ -9,7 +9,7 @@ export const routerState = {
   isEventAttached: false,
 
   getRoute() {
-    const prefix = this.mode === "history" ? "/" : "#/";
+    const prefix = this.mode === "history" ? "/front_5th_chapter1-1/" : "#/";
 
     return {
       [`${prefix}`]: MainPage,
