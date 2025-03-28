@@ -3,8 +3,7 @@ import { ErrorPage } from "../../pages/ErrorPage";
 import { moveToPage } from "./moveToPage";
 import { userAction } from "../../store/action/userAction";
 import { routerState } from "../routerManager";
-import { routerHistoryEvent } from "./routerHistoryEvent";
-import { routerHashEvent } from "./routerHashEvent";
+import { routerAddEvent } from "./routerAddEvent";
 
 export const routerRender = () => {
   const root = document.getElementById("root");
@@ -36,10 +35,7 @@ export const routerRender = () => {
 
   if (!routerState.isEventAttached) {
     routerState.isEventAttached = true;
-
-    return routerState.mode === "history"
-      ? routerHistoryEvent(root)
-      : routerHashEvent(root);
+    return routerAddEvent(root);
   }
 };
 
