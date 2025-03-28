@@ -12,11 +12,11 @@
       </a>
     </div>
   </main>
-`,i=e=>{n.mode==="history"&&(window.history.pushState(null,null,`${n.basePath}${e}`),u()),n.mode==="hash"&&(window.location.hash=`#${e}`)},d={get(e){return JSON.parse(localStorage.getItem(e))},set(e,t){return localStorage.setItem(e,t)},remove(e){return localStorage.removeItem(e)}};let a={};const c={login(e){a={username:e,email:"",bio:""},d.set("user",JSON.stringify(a))},logout(){a=null,d.remove("user")},getUserState(){return a||(a=d.get("user")),a},getUserProfile(){return this.getUserState()},checkIsLoginStatus(){return!!this.getUserState()},updateUserProfile(e,t,r){a={username:e,email:t,bio:r},d.set("user",JSON.stringify(a))}},p=()=>{a=d.get("user")};p();const h=e=>{e&&(e.addEventListener("click",t=>{const r=t.target.closest("a");if(r){if(t.preventDefault(),r.id==="logout"){c.logout(),i("/login");return}i(r.pathname)}}),e.addEventListener("submit",t=>{if(t.preventDefault(),t.target.id==="login-form"){const r=t.target.elements.username.value;if(!r)return alert("사용자 이름을 입력해주세요.");c.login(r),i("/profile")}if(t.target.id==="profile-form"){const r=t.target.elements.username.value,o=t.target.elements.email.value,s=t.target.elements.bio.value;c.updateUserProfile(r,o,s),alert("프로필이 업데이트되었습니다.")}}))},x=e=>{e&&(e.addEventListener("click",t=>{const r=t.target.closest("a");if(r){if(t.preventDefault(),r.id==="logout"){c.logout(),i("/login");return}i(r.getAttribute("href"))}}),e.addEventListener("submit",t=>{if(t.preventDefault(),t.target.id==="login-form"){const r=t.target.elements.username.value;if(!r)return alert("사용자 이름을 입력해주세요.");c.login(r),i("/profile")}if(t.target.id==="profile-form"){const r=t.target.elements.username.value,o=t.target.elements.email.value,s=t.target.elements.bio.value;c.updateUserProfile(r,o,s),alert("프로필이 업데이트되었습니다.")}}))},u=()=>{const e=document.getElementById("root"),t=n.getRoute(),r=c.checkIsLoginStatus(),o=n.mode==="history"?window.location.pathname:window.location.hash||"#/";if(n.mode==="history"){if(o==="/profile"&&!r)return i("/login");if(o==="/login"&&r)return i("/")}else{if(o==="#/profile"&&!r)return i("/login");if(o==="#/login"&&r)return i("/")}console.log(t,o);const s=t[o]||b;if(e.innerHTML=s(),!n.isEventAttached)return n.isEventAttached=!0,n.mode==="history"?h(e):x(e)};window.addEventListener("popstate",u);window.addEventListener("hashchange",u);const f=()=>`
+`,n=e=>{i.mode==="history"&&(window.history.pushState(null,null,`${e}`),u()),i.mode==="hash"&&(window.location.hash=`#${e}`)},c={get(e){return JSON.parse(localStorage.getItem(e))},set(e,t){return localStorage.setItem(e,t)},remove(e){return localStorage.removeItem(e)}};let a={};const d={login(e){a={username:e,email:"",bio:""},c.set("user",JSON.stringify(a))},logout(){a=null,c.remove("user")},getUserState(){return a||(a=c.get("user")),a},getUserProfile(){return this.getUserState()},checkIsLoginStatus(){return!!this.getUserState()},updateUserProfile(e,t,r){a={username:e,email:t,bio:r},c.set("user",JSON.stringify(a))}},p=()=>{a=c.get("user")};p();const h=e=>{e&&(e.addEventListener("click",t=>{const r=t.target.closest("a");if(r){if(t.preventDefault(),r.id==="logout"){d.logout(),n("/login");return}n(r.pathname)}}),e.addEventListener("submit",t=>{if(t.preventDefault(),t.target.id==="login-form"){const r=t.target.elements.username.value;if(!r)return alert("사용자 이름을 입력해주세요.");d.login(r),n("/profile")}if(t.target.id==="profile-form"){const r=t.target.elements.username.value,o=t.target.elements.email.value,s=t.target.elements.bio.value;d.updateUserProfile(r,o,s),alert("프로필이 업데이트되었습니다.")}}))},x=e=>{e&&(e.addEventListener("click",t=>{const r=t.target.closest("a");if(r){if(t.preventDefault(),r.id==="logout"){d.logout(),n("/login");return}n(r.getAttribute("href"))}}),e.addEventListener("submit",t=>{if(t.preventDefault(),t.target.id==="login-form"){const r=t.target.elements.username.value;if(!r)return alert("사용자 이름을 입력해주세요.");d.login(r),n("/profile")}if(t.target.id==="profile-form"){const r=t.target.elements.username.value,o=t.target.elements.email.value,s=t.target.elements.bio.value;d.updateUserProfile(r,o,s),alert("프로필이 업데이트되었습니다.")}}))},u=()=>{const e=document.getElementById("root"),t=i.getRoute(),r=d.checkIsLoginStatus(),o=i.mode==="history"?window.location.pathname:window.location.hash;if(i.mode==="history"){if(o==="/profile"&&!r)return n("/login");if(o==="/login"&&r)return n("/")}else{if(o==="#/profile"&&!r)return n("/login");if(o==="#/login"&&r)return n("/")}const s=t[o]||b;if(e.innerHTML=s(),!i.isEventAttached)return i.isEventAttached=!0,i.mode==="history"?h(e):x(e)};window.addEventListener("popstate",u);window.addEventListener("hashchange",u);const f=()=>`
     <footer class="bg-gray-200 p-4 text-center">
       <p>&copy; 2024 항해플러스. All rights reserved.</p>
     </footer>
-  `,g=()=>{const e=c.checkIsLoginStatus(),t=location.href.split("/").length,r=location.href.split("/")[t-1]==="profile";return`
+  `,g=()=>{const e=d.checkIsLoginStatus(),t=location.href.split("/").length,r=location.href.split("/")[t-1]==="profile";return`
     <header class="bg-blue-600 text-white p-4 sticky top-0">
       <h1 class="text-2xl font-bold">항해플러스</h1>
     </header>
@@ -61,7 +61,7 @@
     ${f()}
   </div>
 </div>
-`,$=()=>`
+`,P=()=>`
   <main class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
       <h1 class="text-2xl font-bold text-center text-blue-600 mb-8">항해플러스</h1>
@@ -83,7 +83,7 @@
       </div>
     </div>
   </main>
-`,P=()=>{const e=c.getUserProfile();return`
+`,L=()=>{const e=d.getUserProfile();return`
   <div id="root">
     <div class="bg-gray-100 min-h-screen flex justify-center">
       <div class="max-w-md w-full">
@@ -149,4 +149,4 @@
         ${f()}
       </div>
     </div>
-  </div>`},n={mode:"",basePath:"",isEventAttached:!1,getRoute(){const e=this.mode==="history"?"/":"#/",t="/front_5th_chapter1-1";return{[`${t}${e}`]:w,[`${t}${e}login`]:$,[`${t}${e}profile`]:P}}},L=e=>{n.basePath="/front_5th_chapter1-1",n.mode=e,u()};export{L as r};
+  </div>`},i={mode:"",isProduct:"",isEventAttached:!1,getRoute(){const e=this.isProduct,t=this.mode;let r="";return e&&(r=t==="history"?"/front_5th_chapter1-1/":"#/"),e||(r=t==="history"?"/":"#/"),{[`${r}`]:w,[`${r}login`]:P,[`${r}profile`]:L}}},$=e=>{i.isProduct=!0,i.mode=e,u()};export{$ as r};
