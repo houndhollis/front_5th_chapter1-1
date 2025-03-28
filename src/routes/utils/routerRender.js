@@ -30,7 +30,7 @@ export const routerRender = () => {
       return moveToPage("/");
     }
   }
-  console.log(route, pathname);
+
   const page = route[pathname] || ErrorPage;
   root.innerHTML = page();
 
