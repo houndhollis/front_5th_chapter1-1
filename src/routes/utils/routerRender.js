@@ -13,7 +13,7 @@ export const routerRender = () => {
   const pathname =
     routerState.mode === "history"
       ? window.location.pathname
-      : window.location.hash;
+      : window.location.hash || "#/";
 
   if (routerState.mode === "history") {
     if (pathname === "/profile" && !isLogin) {
@@ -30,7 +30,7 @@ export const routerRender = () => {
       return moveToPage("/");
     }
   }
-
+  console.log(route, pathname);
   const page = route[pathname] || ErrorPage;
   root.innerHTML = page();
 

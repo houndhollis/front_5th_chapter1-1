@@ -5,24 +5,32 @@ import { ProfilePage } from "../pages/ProfilePage";
 
 export const routerState = {
   mode: "",
-  basePath: "",
+  isProduct: "",
   isEventAttached: false,
 
   getRoute() {
-    const prefix = this.mode === "history" ? "/" : "#/";
-    const productBasePath =
-      import.meta.env.MODE === "production" ? "/front_5th_chapter1-1" : "";
+    const isProduct = this.isProduct;
+    const mode = this.mode;
+
+    let productBasePath = "";
+
+    if (isProduct) {
+      productBasePath = mode === "history" ? "/front_5th_chapter1-1/" : "#/";
+    }
+
+    if (!isProduct) {
+      productBasePath = mode === "history" ? "/" : "#/";
+    }
+
     return {
-      [`${productBasePath}${prefix}`]: MainPage,
-      [`${productBasePath}${prefix}login`]: LoginPage,
-      [`${productBasePath}${prefix}profile`]: ProfilePage,
+      [`${productBasePath}`]: MainPage,
+      [`${productBasePath}login`]: LoginPage,
+      [`${productBasePath}profile`]: ProfilePage,
     };
   },
 };
-
 export const routerManager = (mode) => {
-  const isProduction = import.meta.env.MODE === "production";
-  routerState.basePath = isProduction ? "/front_5th_chapter1-1" : "";
+  routerState.isProduct = import.meta.env.MODE === "production";
   routerState.mode = mode;
 
   routerRender();
