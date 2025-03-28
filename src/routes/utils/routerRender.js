@@ -14,20 +14,17 @@ export const routerRender = () => {
       ? window.location.pathname
       : window.location.hash || "#/";
 
-  if (routerState.mode === "history") {
-    if (pathname === "/profile" && !isLogin) {
-      return moveToPage("/login");
-    }
-    if (pathname === "/login" && isLogin) {
-      return moveToPage("/");
-    }
-  } else {
-    if (pathname === "#/profile" && !isLogin) {
-      return moveToPage("/login");
-    }
-    if (pathname === "#/login" && isLogin) {
-      return moveToPage("/");
-    }
+  if (
+    (pathname === "#/profile" || pathname.split("/").pop() === "profile") &&
+    !isLogin
+  ) {
+    return moveToPage("/login");
+  }
+  if (
+    (pathname === "#/login" || pathname.split("/").pop() === "login") &&
+    isLogin
+  ) {
+    return moveToPage("/");
   }
 
   const page = route[pathname] || ErrorPage;
